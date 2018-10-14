@@ -4,7 +4,7 @@
   "description": "A web application for photographers to use with Sanity CMS, built on choo choo",
   "main": "index.js",
   "scripts": {
-    "start": "budo index.js:bundle.js -p 3000 --no-debug -- -b bundle-collapser/plugin -g unassertify -g yo-yoify -g uglifyify"
+    "start": "budo index.js --live"
   },
   "repository": {
     "type": "git",
@@ -18,9 +18,6 @@
   "homepage": "https://github.com/critsmet/photographer-portfolio-layout#readme",
   "dependencies": {
     "budo": "^11.5.0",
-    "choo": "^6.13.0",
-    "uglifyify": "^5.0.1",
-    "unassertify": "^2.1.1",
-    "yo-yoify": "^4.3.0"
+    "choo": "^6.13.0"
   }
 }

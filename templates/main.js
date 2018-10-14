@@ -6,9 +6,9 @@ module.exports = function(state, emit) {
   return html`
   <div class="main">
     <span class="name" onclick=${navigate}>justin j wee</span>
-    <span class="commission" onclick=${navigate}></span>
-    <span class="personal" onclick=${navigate}></span>
-    <span class="contact" onclick=${navigate}></span>
+    <span class="commission" onclick=${navigate}>commission</span>
+    <span class="personal" onclick=${navigate}>personal</span>
+    <span class="contact" onclick=${navigate}>contract</span>
   </div>
   `
   function navigate(e){
