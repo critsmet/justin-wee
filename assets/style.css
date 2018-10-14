@@ -1,0 +1,23 @@
+.name {
+  position: fixed;
+  top: 5px;
+  left: 5px;
+}
+
+.commission {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+}
+
+.personal {
+  position: fixed; 
+  bottom: 5px;
+  left: 5px;
+}
+
+.contact {
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+}

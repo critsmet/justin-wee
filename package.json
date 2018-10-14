@@ -1,7 +1,7 @@
 {
   "name": "photographerwebsite",
   "version": "1.0.0",
-  "description": "A website for photographers to use with Sanity CMS",
+  "description": "A web application for photographers to use with Sanity CMS, built on choo choo",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
