@@ -4,6 +4,6 @@ const html = require('choo/html')
 //export module
 module.exports = function(){
   return html`
-  <span>series</span>
+  <span>info</span>
   `
 }

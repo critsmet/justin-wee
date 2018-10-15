@@ -1,17 +1,17 @@
 //import choo's html helper
 const html = require('choo/html')
 
+//import container component
+const containerComponent = require('./container.js')
+
 //export module
-module.exports = function(state, emit) {
+module.exports = function(state) {
+
+  const container = new containerComponent("mainContainer", state)
+
   return html`
   <div class="main">
-    <span class="name" onclick=${navigate}>justin j wee</span>
-    <span class="commission" onclick=${navigate}>commission</span>
-    <span class="personal" onclick=${navigate}>personal</span>
-    <span class="contact" onclick=${navigate}>contract</span>
+    ${container.render()}
   </div>
   `
-  function navigate(e){
-    console.log(e.target.className)
-  }
 }
