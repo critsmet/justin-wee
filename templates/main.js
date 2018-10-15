@@ -2,36 +2,51 @@
 const html = require('choo/html')
 const Component = require('choo/component')
 
-//import templates
-const category = require('./category.js')
-const series = require('./series.js')
-const home = require('./home.js')
-const info = require('./info.js')
+//import template
+const Container = require('./container.js')
+
 
 //export module
-module.exports = class Container extends Component {
+module.exports = class Main extends Component {
   constructor (id, state, emit){
     super(id)
-
-    // what does this do?
+    this.state = state
     this.local = state.components[id] = {}
+    this.local.page = state.params.page
     }
+
+  template(){
+    return html`
+    ${new Container("Container", this.state, this.state.emit).render()}
+    `
+  }
 
   createElement(){
     console.log("hi")
     return html`
-    <div>
+    <div id="main">
       <a class="name" href="/">justin j wee</a>
       <a class="commission" href="/commission">commission</a>
       <a class="personal" href="/personal">personal</a>
       <a class="contact" href="/info">contact</a>
       <br>
-      ${this.local.page()}
+      <div id="page">
+      ${this.template()}
+      </div>
     </div>
     `
   }
 
+  load(){
+    console.log("yyooo")
+  }
+
   update(){
+    if(this.local.page !== this.state.params.page){
+      this.local.page = this.state.params.page
+      page.innerHTML = ``
+      page.appendChild(this.template())
+    }
     return false
   }
 }
