@@ -5,14 +5,20 @@ const choo = require('choo')
 const html = require('choo/html')
 
 //import template
-const main = require('./templates/main.js')
+const MainTemplate = require('./templates/Main.js')
 
 //initialize choo
 const app = choo()
 
+const Main = (state) => {
+    return html`
+      ${state.cache(MainTemplate, 'Main').render()}
+    `
+  }
+
 //create route
-app.route('/', main)
-app.route('/:page', main)
+app.route('/', Main)
+app.route('/:page', Main)
 
 // start app
 app.mount('div')

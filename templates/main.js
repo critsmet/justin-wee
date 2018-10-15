@@ -1,17 +1,37 @@
-//import choo's html helper
+//import choo's html helper & component
 const html = require('choo/html')
+const Component = require('choo/component')
 
-//import container component
-const containerComponent = require('./container.js')
+//import templates
+const category = require('./category.js')
+const series = require('./series.js')
+const home = require('./home.js')
+const info = require('./info.js')
 
 //export module
-module.exports = function(state) {
+module.exports = class Container extends Component {
+  constructor (id, state, emit){
+    super(id)
 
-  const container = new containerComponent("mainContainer", state)
+    // what does this do?
+    this.local = state.components[id] = {}
+    }
 
-  return html`
-  <div class="main">
-    ${container.render()}
-  </div>
-  `
+  createElement(){
+    console.log("hi")
+    return html`
+    <div>
+      <a class="name" href="/">justin j wee</a>
+      <a class="commission" href="/commission">commission</a>
+      <a class="personal" href="/personal">personal</a>
+      <a class="contact" href="/info">contact</a>
+      <br>
+      ${this.local.page()}
+    </div>
+    `
+  }
+
+  update(){
+    return false
+  }
 }
