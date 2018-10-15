@@ -12,6 +12,7 @@ const app = choo()
 
 //create route
 app.route('/', main)
+app.route('/:page', main)
 
 // start app
 app.mount('div')

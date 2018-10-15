@@ -11,7 +11,7 @@
 }
 
 .personal {
-  position: fixed; 
+  position: fixed;
   bottom: 5px;
   left: 5px;
 }
@@ -20,4 +20,9 @@
   position: fixed;
   bottom: 5px;
   right: 5px;
+}
+
+a, a:visited {
+  color: black;
+  text-decoration: none;
 }
