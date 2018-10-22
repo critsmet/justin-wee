@@ -5,7 +5,8 @@ const html = require('choo/html')
 const wrapper = require('./wrapper.js')
 
 //define template function
-function category(state){
+function category(state, emitter){
+  console.log(emitter)
   return html`
   <div>category</div>
   `

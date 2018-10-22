@@ -1,10 +1,10 @@
 //import choo's html helper & component
 const html = require('choo/html')
 
-//export module
-module.exports = function wrapper(template) {
-  return function(state){
-    console.log(state)
+//define wrapper
+function wrapper(template) {
+  return function(state, emit){
+
     return html`
     <body>
       <link rel="stylesheet" href="../style.css"/>
@@ -13,8 +13,11 @@ module.exports = function wrapper(template) {
       <a class="personal" href="/personal">personal</a>
       <a class="contact" href="/info">contact</a>
       <br>
-      ${template(state)}
+      ${template(state, emit)}
     </body>
     `
   }
 }
+
+//export module
+module.exports = wrapper

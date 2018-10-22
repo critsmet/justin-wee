@@ -5,7 +5,8 @@ const html = require('choo/html')
 const wrapper = require('./wrapper.js')
 
 //define template function
-function home(state){
+function home(state, emit){
+  emit('update', "yoo")
   return html`
   <div>home</div>
   `
