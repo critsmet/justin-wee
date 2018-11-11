@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/critsmet/photographer-portfolio-layout#readme",
   "dependencies": {
+    "@sanity/client": "^0.135.3",
     "@sanity/image-url": "^0.134.1",
     "budo": "^11.5.0",
     "choo": "^6.13.0"

@@ -15,13 +15,18 @@ const app = choo()
 
 //create store and handle emits
 app.use((state, emitter) => {
-  state.page = "home"
+  state.page = ""
   state.images = []
 
-  emitter.on('update', (param) => {
-    fetch(`https://n3f1vhuk.api.sanity.io/v1/data/query/website?query=*[_type%20==%20%22series%22][0..1]`)
+  //define queries
+
+  emitter.on('update', (query) => {
+    fetch(`https://n3f1vhuk.api.sanity.io/v1/data/query/website?query=` + query)
     .then(resp => resp.json())
-    .then(resp => state.images = resp)
+    .then(resp => {
+      state.images = resp.result['0'].photos
+      emitter.emit('render')
+    })
   })
 })
 
