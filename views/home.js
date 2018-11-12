@@ -20,11 +20,24 @@ function getUrl(source){
   return builder.image(source)
 }
 
+//random margin & width
+function randBotMarg() {
+  return Math.floor(50 + Math.random()*(100 + 1 - 50))
+}
+
+function randWidMarg() {
+  return Math.floor(125 + Math.random()*(175 + 1 - 125))
+}
+
+function randWidth(){
+  return Math.floor(200 + Math.random()*(350 + 1 - 200))
+}
+
 //format images
 function formatImages(images){
   return images.map(image => {
     return html`
-    <img src=${getUrl(image).width(900).url()} width="400"/>
+    <img src=${getUrl(image).width(1250).url()} align="center" style="margin-left: ${randWidMarg()}px; margin-right: ${randWidMarg()}px; margin-bottom: ${randBotMarg()}px" width=${randWidth()}/>
     `
   })
 }
@@ -38,9 +51,8 @@ function home(state, emit){
     }
   })
   return html`
-  <div>
-  ${formatImages(state.images)}
-
+  <div id="container" style="width: 100vw; margin: auto; text-align: center;">
+    ${formatImages(state.images)}
   </div>
   `
 }
