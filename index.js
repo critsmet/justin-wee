@@ -17,14 +17,15 @@ const app = choo()
 app.use((state, emitter) => {
   state.page = ""
   state.images = []
-
-  //define queries
+  state.titles = []
 
   emitter.on('update', (query) => {
     fetch(`https://n3f1vhuk.api.sanity.io/v1/data/query/website?query=` + query)
     .then(resp => resp.json())
     .then(resp => {
+      console.log(resp)
       state.images = resp.result['0'].photos
+      state.titles = resp.result['0'].titles
       emitter.emit('render')
     })
   })
