@@ -34,7 +34,7 @@ function randWidth(){
 }
 
 //format images
-function formatImages(images){
+function formatImages(images) {
   return images.map(image => {
     return html`
     <img src=${getUrl(image).width(1250).url()} align="center" style="margin-left: ${randWidMarg()}px; margin-right: ${randWidMarg()}px; margin-bottom: ${randBotMarg()}px" width=${randWidth()}/>
@@ -47,12 +47,12 @@ function home(state, emit){
   ready(() => {
     if(state.page !== "home"){
       state.page = "home"
-      emit('update', query)
+      emit('setHome', query)
     }
   })
   return html`
   <div id="container" style="width: 100vw; margin: auto; text-align: center;">
-    ${formatImages(state.images)}
+    ${formatImages(state.homeImages)}
   </div>
   `
 }

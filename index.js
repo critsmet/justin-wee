@@ -16,20 +16,30 @@ const app = choo()
 //create store and handle emits
 app.use((state, emitter) => {
   state.page = ""
-  state.images = []
+  state.homeImages = []
   state.titles = []
+  state.commissions = []
 
-  emitter.on('update', (query) => {
+  emitter.on('setHome', (query) => {
     fetch(`https://n3f1vhuk.api.sanity.io/v1/data/query/website?query=` + query)
     .then(resp => resp.json())
     .then(resp => {
-      console.log(resp)
-      state.images = resp.result['0'].photos
-      state.titles = resp.result['0'].titles
+      state.homeImages = resp.result['0'].photos
       emitter.emit('render')
     })
   })
-})
+
+  emitter.on('setCommission', (query) => {
+    fetch(`https://n3f1vhuk.api.sanity.io/v1/data/query/website?query=` + query)
+    .then(resp => resp.json())
+    .then(resp => {
+      state.commissions = resp.result.map(result => {
+           return {title: result.title, photos: result.display_photos}
+        })
+        emitter.emit('render')
+      })
+    })
+  })
 
 //define routes
 app.route('/', home)

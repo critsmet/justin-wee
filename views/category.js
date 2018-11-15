@@ -33,12 +33,15 @@ function randWidth(){
   return Math.floor(200 + Math.random()*(350 + 1 - 200))
 }
 
+//how to get images out in a certain order!
 //format images
-function formatImages(images){
-  return images.map(image => {
-    return html`
-    <img src=${getUrl(image).width(1250).url()} align="center" style="margin-left: ${randWidMarg()}px; margin-right: ${randWidMarg()}px; margin-bottom: ${randBotMarg()}px" width=${randWidth()}/>
-    `
+function formatImages(images) {
+   return images.map(commission => {
+     commission.photos.map(image=> {
+      return html`
+      <img src=${getUrl(image).width(1250).url()} align="center" style="margin-left: ${randWidMarg()}px; margin-right: ${randWidMarg()}px; margin-bottom: ${randBotMarg()}px" width=${randWidth()}/>
+      `
+     })
   })
 }
 
@@ -47,13 +50,12 @@ function home(state, emit){
   ready(() => {
     if(state.page !== "commission"){
       state.page = "commission"
-      emit('update', query)
+      emit('setCommission', query)
     }
   })
   return html`
   <div id="container" style="width: 100vw; margin: auto; text-align: center;">
-    ${formatImages(state.images)}
-    ${console.log(state, query)}
+    ${formatImages(state.commissions)}
   </div>
   `
 }
