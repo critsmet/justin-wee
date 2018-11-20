@@ -26,7 +26,7 @@ function randBotMarg() {
 }
 
 function randWidMarg() {
-  return Math.floor(1 + Math.random()*(175 + 1 - 1))
+  return Math.floor(1 + Math.random()*(175 + 1 - 125))
 }
 
 function randWidth(){
@@ -45,14 +45,15 @@ function formatImages(images) {
 //define template function
 function home(state, emit){
   ready(() => {
+    console.log("On Dom")
     if(state.page !== "home"){
       state.page = "home"
-      emit('setHome', query)
+      emit('setImages', "title", "Home")
     }
   })
   return html`
   <div id="container" style="width: 100vw; margin: auto; text-align: center;">
-    ${formatImages(state.homeImages)}
+    ${console.log("preparing")}
   </div>
   `
 }

@@ -50,19 +50,17 @@ function formatSeries(series) {
 
 //define template function
 function home(state, emit){
-  const query = `*[category == "${state.route}"]{title, display_photos}`
   ready(() => {
+    console.log('On Dom Category')
     if(state.page !== state.route){
+      console.log(state.page, state.route)
       state.page = state.route
-      emit('setCategory', query)
+      emit('setCategory', "commission")
     }
   })
   return html`
   <div id="container" style="width: 100vw; margin: auto; text-align: center;">
-  ${console.log(state)}
-    ${state.commissions.map(series => {
-      return formatSeries(series)
-    })}
+  ${console.log("preparing category")}
   </div>
   `
 }
