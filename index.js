@@ -29,7 +29,8 @@ app.use((state, emitter) => {
     })
   })
 
-  emitter.on('setCommission', (query) => {
+  emitter.on('setCategory', (query) => {
+    console.log(state, query)
     fetch(`https://n3f1vhuk.api.sanity.io/v1/data/query/website?query=` + query)
     .then(resp => resp.json())
     .then(resp => {

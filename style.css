@@ -2,10 +2,6 @@ body {
   background-color: #E2E2E2;
 }
 
-#container {
-  background: coral;
-}
-
 .name {
   position: fixed;
   top: 5px;

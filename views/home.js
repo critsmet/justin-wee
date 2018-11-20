@@ -22,11 +22,11 @@ function getUrl(source){
 
 //random margin & width
 function randBotMarg() {
-  return Math.floor(50 + Math.random()*(100 + 1 - 50))
+  return Math.floor(1 + Math.random()*(100 + 1 - 1))
 }
 
 function randWidMarg() {
-  return Math.floor(125 + Math.random()*(175 + 1 - 125))
+  return Math.floor(1 + Math.random()*(175 + 1 - 1))
 }
 
 function randWidth(){

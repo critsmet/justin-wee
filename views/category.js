@@ -11,10 +11,6 @@ const ready = require('document-ready')
 
 //import wrapper
 const wrapper = require('./wrapper.js')
-
-//query
-const query = `*[category == "commission"]{title, display_photos}`
-
 //get urls
 function getUrl(source){
   return builder.image(source)
@@ -22,11 +18,11 @@ function getUrl(source){
 
 //random margin & width
 function randBotMarg() {
-  return Math.floor(50 + Math.random()*(100 + 1 - 50))
+  return Math.floor(1 + Math.random()*(100 + 1 - 1))
 }
 
 function randWidMarg() {
-  return Math.floor(125 + Math.random()*(175 + 1 - 125))
+  return Math.floor(1 + Math.random()*(175 + 1 - 1))
 }
 
 function randWidth(){
@@ -54,14 +50,16 @@ function formatSeries(series) {
 
 //define template function
 function home(state, emit){
+  const query = `*[category == "${state.route}"]{title, display_photos}`
   ready(() => {
-    if(state.page !== "commission"){
-      state.page = "commission"
-      emit('setCommission', query)
+    if(state.page !== state.route){
+      state.page = state.route
+      emit('setCategory', query)
     }
   })
   return html`
   <div id="container" style="width: 100vw; margin: auto; text-align: center;">
+  ${console.log(state)}
     ${state.commissions.map(series => {
       return formatSeries(series)
     })}
