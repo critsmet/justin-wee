@@ -8,20 +8,13 @@ const ready = require('document-ready')
 const wrapper = require('./wrapper.js')
 
 //define template function
-function home(state, emit){
-    if(state.page !== "Home"){
-      state.page = "Home"
-      emit('setImages', "title", "Home")
-    }
+function commission(state, emit){
   return html`
   <div id="container" style="width: 100vw; margin: auto; text-align: center;">
-    ${state.images.map(group => {
-        return state.formatImages(group.photos)
-    })
-  }
+    ${state.page === "Commission" ? "False" : state.page = "True"}
   </div>
   `
 }
 
 //export wrapped module
-module.exports = wrapper(home)
+module.exports = wrapper(commission)
