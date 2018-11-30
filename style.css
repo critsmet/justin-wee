@@ -1,32 +1,39 @@
+@font-face {
+    font-family: Brown;
+    src: url(BrownStd-Light.otf);
+}
+
 body {
+  font-family: Brown;
   background-color: #E2E2E2;
 }
 
 .name {
   position: fixed;
-  top: 5px;
-  left: 5px;
+  top: .1em;
+  left: .25em;
 }
 
 .commission {
   position: fixed;
-  top: 5px;
-  right: 5px;
+  top: .1em;
+  right: .25em;
 }
 
 .personal {
   position: fixed;
-  bottom: 5px;
-  left: 5px;
+  bottom: .1em;
+  left: .25em;
 }
 
 .contact {
   position: fixed;
-  bottom: 5px;
-  right: 5px;
+  bottom: .1em;
+  right: .25em;
 }
 
 a, a:visited {
+  font-size: 3em;
   color: black;
   text-decoration: none;
 }

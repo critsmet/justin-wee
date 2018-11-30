@@ -19,33 +19,13 @@ const builder = imageUrlBuilder(client)
 //create app instance
 const app = choo()
 
-function randBotMarg() {
-  return Math.floor(1 + Math.random()*(100 + 1 - 1))
-}
-
-function randWidMarg() {
-  return Math.floor(1 + Math.random()*(175 + 1 - 1))
-}
-
-function randWidth(){
-  return Math.floor(200 + Math.random()*(350 + 1 - 200))
-}
-
-function getUrl(source){
-  return builder.image(source)
-}
-
 app.use((state, emitter) => {
 
   state.images = []
   state.page = ""
 
-  state.formatImages = function(images){
-    return images.map(image => {
-      return html`
-        <img src=${getUrl(image).width(1250).url()} align="center" style="margin-left: ${randWidMarg()}px; margin-right: ${randWidMarg()}px; margin-bottom: ${randBotMarg()}px" width=${randWidth()}/>
-      `
-    })
+  state.getUrl = function(source){
+    return builder.image(source)
   }
 
   state.formatCategory = function(array){
@@ -62,7 +42,7 @@ app.use((state, emitter) => {
       state.images = resp.result.map(result => {
         return {title: result.title, display_photos: result.display_photos, photos: result.photos}
       })
-      state.page = state.route
+      state.page = name
       emitter.emit('render')
     })
   })
@@ -70,7 +50,7 @@ app.use((state, emitter) => {
 
 
 //define routes
-app.route('/', wrapper(gallery))
+app.route('/', wrapper(home))
 app.route('/info', wrapper(info))
 app.route('/commission', wrapper(gallery))
 app.route('/personal', wrapper(gallery))
