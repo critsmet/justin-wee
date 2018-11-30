@@ -1,6 +1,3 @@
-//import choo's html helper
-const html = require('choo/html')
-
 //import choo
 const choo = require('choo')
 

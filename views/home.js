@@ -1,6 +1,5 @@
 const html = require('choo/html')
 const ready = require('document-ready')
-const wrapper = require('./wrapper.js')
 
 //define template function
 function home(state, emit){
