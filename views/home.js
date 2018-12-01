@@ -26,7 +26,7 @@ function home(state, emit){
 
   ready(() => {
     if(state.page !== "Home"){
-      emit('setImages', "title", "Home")
+      emit('setImages', "title", "Home", "title, photos")
     }
 
   })

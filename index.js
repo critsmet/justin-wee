@@ -25,17 +25,10 @@ app.use((state, emitter) => {
     return builder.image(source)
   }
 
-  state.formatCategory = function(array){
-    return array.map(group => {
-      return state.formatImages(group.photos)
-    })
-  }
-
-  emitter.on('setImages', (category, name) => {
-    fetch(`https://n3f1vhuk.api.sanity.io/v1/data/query/website?query=*[${category} == "${name}"]{title, photos, display_photos}`)
+  emitter.on('setImages', (category, name, needs) => {
+    fetch(`https://n3f1vhuk.api.sanity.io/v1/data/query/website?query=*[${category} == "${name}"]{${needs}}`)
     .then(resp => resp.json())
     .then(resp => {
-    console.log(resp)
       state.images = resp.result.map(result => {
         return {title: result.title, display_photos: result.display_photos, photos: result.photos}
       })
@@ -51,7 +44,7 @@ app.route('/', wrapper(home))
 app.route('/info', wrapper(info))
 app.route('/commission', wrapper(gallery))
 app.route('/personal', wrapper(gallery))
-app.route('/series/:series', wrapper(series))
+app.route('/:series/:photo', wrapper(series))
 
 //mount app
 app.mount('body')

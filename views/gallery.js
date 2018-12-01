@@ -8,21 +8,30 @@ function gallery(state, emit){
   function formatImages(images){
     return images.map(image => {
       return html`
-        <img src=${state.getUrl(image).width(1250).url()}/>
+        <img src=${state.getUrl(image).width(300).url()}/>
       `
     })
   }
 
-  formatSeries(photos_array){
-    photos_array.map(object => {
-      
+  function formatSeries(photos_array){
+    return photos_array.map(photos_object => {
+      return html`
+        <div>
+          <div>
+            ${formatImages(photos_object.display_photos)}
+          </div>
+          <span>
+            <a href="/${photos_object.title.toLowerCase().split(" ").join("-")}/1">${photos_object.title}</a>
+          </span>
+        </div>
+      `
     })
   }
 
   let name = state.route.charAt(0).toUpperCase() + state.route.slice(1)
   ready(() => {
     if(state.page !== name){
-      emit('setImages', "category", name)
+      emit('setImages', "category", name, "title, display_photos")
     }
 
   })
