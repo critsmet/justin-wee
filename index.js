@@ -6,7 +6,6 @@ const info = require('./views/info.js')
 const home = require('./views/home.js')
 const gallery = require('./views/gallery.js')
 const series = require('./views/series.js')
-const wrapper = require('./views/wrapper.js')
 
 //import imageUrlBuilder and client from Sanity and put in constant
 const imageUrlBuilder = require('@sanity/image-url')
@@ -40,11 +39,11 @@ app.use((state, emitter) => {
 
 
 //define routes
-app.route('/', wrapper(home))
-app.route('/info', wrapper(info))
-app.route('/commission', wrapper(gallery))
-app.route('/personal', wrapper(gallery))
-app.route('/:series/:photo', wrapper(series))
+app.route('/', home)
+app.route('/info', info)
+app.route('/commission', gallery)
+app.route('/personal', gallery)
+app.route('/:series/:photo', series)
 
 //mount app
-app.mount('body')
+app.mount('div')

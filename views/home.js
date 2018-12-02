@@ -9,7 +9,7 @@ function home(state, emit){
   }
 
   function randWidMarg() {
-    return Math.floor(1 + Math.random()*(175 + 1 - 1))
+    return Math.floor(Math.random()*(175 + 1))
   }
 
   function randWidth(){
@@ -19,7 +19,7 @@ function home(state, emit){
   function formatImages(images){
     return images.map(image => {
       return html`
-        <img src=${state.getUrl(image).width(1250).url()} align="center" style="margin-left: ${randWidMarg()}px; margin-right: ${randWidMarg()}px; margin-bottom: ${randBotMarg()}px" width=${randWidth()}/>
+        <img src=${state.getUrl(image).width(1250).url()} align="center" style="margin-left: 0px; margin-right: ${randWidMarg()}px; margin-bottom: ${randBotMarg()}px" width=${randWidth()}/>
       `
     })
   }
@@ -32,7 +32,7 @@ function home(state, emit){
   })
 
   return html`
-    <div id="container" style="width: 100vw; margin: auto; text-align: center;">
+    <div id="container" style="width: 100vw; display: flex-wrap; justify-content: space-between;">
       ${state.page === "Home" ? formatImages(state.images[0].photos) : null}
     </div>
     `
